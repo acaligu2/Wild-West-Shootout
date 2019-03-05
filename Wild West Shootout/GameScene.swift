@@ -15,6 +15,28 @@ class GameScene: SKScene {
     let player2 = SKSpriteNode(imageNamed:"rightCowboy0")
     
     let gunSound = SKAction.playSoundFileNamed("gunshot.wav", waitForCompletion: false)
+    let threeSound = SKAction.playSoundFileNamed("three.wav", waitForCompletion: true)
+    let twoSound = SKAction.playSoundFileNamed("two.wav", waitForCompletion: true)
+    let oneSound = SKAction.playSoundFileNamed("one.wav", waitForCompletion: true)
+    
+    var allowedToShoot = false
+    var winner = -1
+    
+    lazy var countdownLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "Ariel")
+        label.fontSize = 200.0
+        label.zPosition = 2
+        label.color = SKColor.brown
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        label.text = "\(maxTime)"
+        return label
+    }()
+    
+    var labelText = 0;
+    
+    var counterTimer = Timer()
+    var maxTime = 10
     
     override func didMove(to view: SKView) {
         
@@ -25,6 +47,12 @@ class GameScene: SKScene {
         background.zPosition = 0
         
         self.addChild(background)
+        
+        countdownLabel.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.5)
+        addChild(countdownLabel)
+        
+        labelText = maxTime
+        startCount()
         
         player1.setScale(1.25)
         player1.position = CGPoint(x: self.size.width * 0.15, y: self.size.height * 0.30)
@@ -37,6 +65,51 @@ class GameScene: SKScene {
         player2.zPosition = 2
         
         self.addChild(player2)
+        
+    }
+    
+    func startCount(){
+        
+        counterTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func decrementCounter(){
+        
+        if !allowedToShoot {
+            
+            if(labelText <= 1){
+                
+                allowedToShoot = true
+                countdownLabel.text = "DRAW!"
+                return
+                
+            }
+        
+            if(labelText == 3){
+                
+                let cS = SKAction.sequence([threeSound])
+                self.run(cS)
+                
+            }else if(labelText == 2){
+                
+                let cS = SKAction.sequence([twoSound])
+                self.run(cS)
+                
+            }else if(labelText == 1){
+                
+                let cS = SKAction.sequence([oneSound])
+                self.run(cS)
+                
+            }
+            
+            
+            labelText -= 1
+            
+            countdownLabel.text = "\(labelText)"
+            
+        
+        }
         
     }
     
@@ -105,34 +178,60 @@ class GameScene: SKScene {
             
         }
         
-        if(isLeft){
+        if(isLeft && allowedToShoot){
             
             player1Shoot()
             //player1.texture = SKTexture(imageNamed:"leftCowboy1")
             
+            if (leftTimestamp > rightTimestamp){
+                
+                winner = 1
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }else if(rightTimestamp > leftTimestamp){
+                
+                winner = 2
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }else{
+                
+                winner = 3
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }
+            
         }
         
-        if(isRight){
+        if(isRight && allowedToShoot){
             
             player2Shoot()
             //player2.texture = SKTexture(imageNamed:"rightCowboy0")
+            
+            if (leftTimestamp > rightTimestamp){
+                
+                winner = 1
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }else if(rightTimestamp > leftTimestamp){
+                
+                winner = 2
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }else{
+                
+                winner = 3
+                allowedToShoot = false
+                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                
+            }
+            
         }
-        
-        if (leftTimestamp > rightTimestamp){
-            
-            NSLog("Player 1 wins")
-            
-        }else if(rightTimestamp > leftTimestamp){
-            
-            NSLog("Player 2 wins")
-            
-            
-        }else{
-            
-            NSLog("Tie")
-            
-        }
-        
+
     }
     
 }

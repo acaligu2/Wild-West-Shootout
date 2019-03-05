@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9204D0E9222EE8540058B8C9 /* two.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9204D0E6222EE8540058B8C9 /* two.wav */; };
+		9204D0EA222EE8540058B8C9 /* one.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9204D0E7222EE8540058B8C9 /* one.wav */; };
+		9204D0EB222EE8540058B8C9 /* three.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9204D0E8222EE8540058B8C9 /* three.wav */; };
 		9205B61A222DAED900118B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B619222DAED900118B95 /* AppDelegate.swift */; };
 		9205B61C222DAED900118B95 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9205B61B222DAED900118B95 /* GameScene.sks */; };
 		9205B61E222DAED900118B95 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9205B61D222DAED900118B95 /* Actions.sks */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9204D0E6222EE8540058B8C9 /* two.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = two.wav; sourceTree = "<group>"; };
+		9204D0E7222EE8540058B8C9 /* one.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = one.wav; sourceTree = "<group>"; };
+		9204D0E8222EE8540058B8C9 /* three.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = three.wav; sourceTree = "<group>"; };
 		9205B616222DAED900118B95 /* Wild West Shootout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wild West Shootout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9205B619222DAED900118B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9205B61B222DAED900118B95 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				9205B621222DAED900118B95 /* GameViewController.swift */,
 				9205B623222DAED900118B95 /* Main.storyboard */,
 				92065B76222EAFBB001E79EF /* gunshot.wav */,
+				9204D0E7222EE8540058B8C9 /* one.wav */,
+				9204D0E8222EE8540058B8C9 /* three.wav */,
+				9204D0E6222EE8540058B8C9 /* two.wav */,
 				9205B626222DAED900118B95 /* Assets.xcassets */,
 				9205B628222DAED900118B95 /* LaunchScreen.storyboard */,
 				9205B62B222DAED900118B95 /* Info.plist */,
@@ -245,8 +254,11 @@
 				9205B61C222DAED900118B95 /* GameScene.sks in Resources */,
 				9205B627222DAED900118B95 /* Assets.xcassets in Resources */,
 				92065B77222EAFBB001E79EF /* gunshot.wav in Resources */,
+				9204D0E9222EE8540058B8C9 /* two.wav in Resources */,
+				9204D0EA222EE8540058B8C9 /* one.wav in Resources */,
 				9205B62A222DAED900118B95 /* LaunchScreen.storyboard in Resources */,
 				9205B61E222DAED900118B95 /* Actions.sks in Resources */,
+				9204D0EB222EE8540058B8C9 /* three.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
