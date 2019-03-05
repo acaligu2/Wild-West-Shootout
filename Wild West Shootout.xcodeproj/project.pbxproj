@@ -17,6 +17,7 @@
 		9205B62A222DAED900118B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9205B628222DAED900118B95 /* LaunchScreen.storyboard */; };
 		9205B635222DAED900118B95 /* Wild_West_ShootoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B634222DAED900118B95 /* Wild_West_ShootoutTests.swift */; };
 		9205B640222DAED900118B95 /* Wild_West_ShootoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */; };
+		92065B77222EAFBB001E79EF /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92065B76222EAFBB001E79EF /* gunshot.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9205B63B222DAED900118B95 /* Wild West ShootoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wild West ShootoutUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wild_West_ShootoutUITests.swift; sourceTree = "<group>"; };
 		9205B641222DAED900118B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92065B76222EAFBB001E79EF /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunshot.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				9205B61F222DAED900118B95 /* GameScene.swift */,
 				9205B621222DAED900118B95 /* GameViewController.swift */,
 				9205B623222DAED900118B95 /* Main.storyboard */,
+				92065B76222EAFBB001E79EF /* gunshot.wav */,
 				9205B626222DAED900118B95 /* Assets.xcassets */,
 				9205B628222DAED900118B95 /* LaunchScreen.storyboard */,
 				9205B62B222DAED900118B95 /* Info.plist */,
@@ -241,6 +244,7 @@
 				9205B625222DAED900118B95 /* Main.storyboard in Resources */,
 				9205B61C222DAED900118B95 /* GameScene.sks in Resources */,
 				9205B627222DAED900118B95 /* Assets.xcassets in Resources */,
+				92065B77222EAFBB001E79EF /* gunshot.wav in Resources */,
 				9205B62A222DAED900118B95 /* LaunchScreen.storyboard in Resources */,
 				9205B61E222DAED900118B95 /* Actions.sks in Resources */,
 			);
@@ -445,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P97S29WM9X;
 				INFOPLIST_FILE = "Wild West Shootout/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P97S29WM9X;
 				INFOPLIST_FILE = "Wild West Shootout/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

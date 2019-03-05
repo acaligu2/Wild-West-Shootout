@@ -14,6 +14,8 @@ class GameScene: SKScene {
     let player1 = SKSpriteNode(imageNamed:"leftCowboy1")
     let player2 = SKSpriteNode(imageNamed:"rightCowboy0")
     
+    let gunSound = SKAction.playSoundFileNamed("gunshot.wav", waitForCompletion: false)
+    
     override func didMove(to view: SKView) {
         
         let background = SKSpriteNode(imageNamed: "background")
@@ -51,15 +53,85 @@ class GameScene: SKScene {
         let deleteBullet = SKAction.removeFromParent()
         
         player1.texture = SKTexture(imageNamed:"leftCowboy2")
-        let bulletSequence = SKAction.sequence([moveBullet, deleteBullet])
+        let bulletSequence = SKAction.sequence([gunSound, moveBullet, deleteBullet])
      
         bullet1.run(bulletSequence)
         
     }
     
+    func player2Shoot(){
+        
+        let bullet2 = SKSpriteNode(imageNamed: "bullet")
+        bullet2.setScale(5)
+        
+        bullet2.position = player2.position
+        bullet2.zPosition = 1
+        self.addChild(bullet2)
+        
+        let moveBullet = SKAction.moveTo(x: 0 - bullet2.size.width, duration: 0.5)
+        let deleteBullet = SKAction.removeFromParent()
+        
+        player2.texture = SKTexture(imageNamed:"pixil-frame-0")
+        let bulletSequence = SKAction.sequence([gunSound, moveBullet, deleteBullet])
+        
+        bullet2.run(bulletSequence)
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        player1Shoot()
+        var isRight : Bool = false
+        var isLeft : Bool = false
+        
+        var leftTimestamp = 0.0
+        var rightTimestamp = 0.0
+        
+        for touch in touches{
+            
+            let location = touch.location(in: self)
+            
+            if(location.x < self.size.width/2){
+                
+                isLeft = true
+                leftTimestamp = touch.timestamp
+                
+            }
+            if(location.x > self.size.width/2){
+                
+                isRight = true
+                rightTimestamp = touch.timestamp
+                
+            }
+            
+        }
+        
+        if(isLeft){
+            
+            player1Shoot()
+            //player1.texture = SKTexture(imageNamed:"leftCowboy1")
+            
+        }
+        
+        if(isRight){
+            
+            player2Shoot()
+            //player2.texture = SKTexture(imageNamed:"rightCowboy0")
+        }
+        
+        if (leftTimestamp > rightTimestamp){
+            
+            NSLog("Player 1 wins")
+            
+        }else if(rightTimestamp > leftTimestamp){
+            
+            NSLog("Player 2 wins")
+            
+            
+        }else{
+            
+            NSLog("Tie")
+            
+        }
         
     }
     
