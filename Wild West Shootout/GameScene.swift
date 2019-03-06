@@ -20,6 +20,7 @@ class GameScene: SKScene {
     let oneSound = SKAction.playSoundFileNamed("one.wav", waitForCompletion: true)
     
     var allowedToShoot = false
+    var gameOver = false
     var winner = -1
     
     lazy var countdownLabel: SKLabelNode = {
@@ -86,17 +87,17 @@ class GameScene: SKScene {
                 
             }
         
-            if(labelText == 3){
+            if(labelText == 4){
                 
                 let cS = SKAction.sequence([threeSound])
                 self.run(cS)
                 
-            }else if(labelText == 2){
+            }else if(labelText == 3){
                 
                 let cS = SKAction.sequence([twoSound])
                 self.run(cS)
                 
-            }else if(labelText == 1){
+            }else if(labelText == 2){
                 
                 let cS = SKAction.sequence([oneSound])
                 self.run(cS)
@@ -150,6 +151,7 @@ class GameScene: SKScene {
         bullet2.run(bulletSequence)
         
     }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -182,27 +184,6 @@ class GameScene: SKScene {
             
             player1Shoot()
             //player1.texture = SKTexture(imageNamed:"leftCowboy1")
-            
-            if (leftTimestamp > rightTimestamp){
-                
-                winner = 1
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
-                
-            }else if(rightTimestamp > leftTimestamp){
-                
-                winner = 2
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
-                
-            }else{
-                
-                winner = 3
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
-                
-            }
-            
         }
         
         if(isRight && allowedToShoot){
@@ -210,25 +191,26 @@ class GameScene: SKScene {
             player2Shoot()
             //player2.texture = SKTexture(imageNamed:"rightCowboy0")
             
+            
+        }
+        
+        if(allowedToShoot && !gameOver){
+        
             if (leftTimestamp > rightTimestamp){
                 
-                winner = 1
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                countdownLabel.text = "Player 1 Wins!"
                 
             }else if(rightTimestamp > leftTimestamp){
                 
-                winner = 2
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
+                countdownLabel.text = "Player 2 Wins!"
+
+            }else if(rightTimestamp == leftTimestamp){
                 
-            }else{
+                countdownLabel.text = "TIE!"
                 
-                winner = 3
-                allowedToShoot = false
-                countdownLabel.text = "Player " + "\(winner)" + "Wins!"
-                
-            }
+            }else{}
+            
+            gameOver = true
             
         }
 

@@ -21,6 +21,7 @@
 		9205B635222DAED900118B95 /* Wild_West_ShootoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B634222DAED900118B95 /* Wild_West_ShootoutTests.swift */; };
 		9205B640222DAED900118B95 /* Wild_West_ShootoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */; };
 		92065B77222EAFBB001E79EF /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92065B76222EAFBB001E79EF /* gunshot.wav */; };
+		929E85C822301C2E009CA3CB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E85C722301C2E009CA3CB /* MainMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wild_West_ShootoutUITests.swift; sourceTree = "<group>"; };
 		9205B641222DAED900118B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92065B76222EAFBB001E79EF /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunshot.wav; sourceTree = "<group>"; };
+		929E85C722301C2E009CA3CB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				9205B626222DAED900118B95 /* Assets.xcassets */,
 				9205B628222DAED900118B95 /* LaunchScreen.storyboard */,
 				9205B62B222DAED900118B95 /* Info.plist */,
+				929E85C722301C2E009CA3CB /* MainMenu.swift */,
 			);
 			path = "Wild West Shootout";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				9205B620222DAED900118B95 /* GameScene.swift in Sources */,
 				9205B622222DAED900118B95 /* GameViewController.swift in Sources */,
 				9205B61A222DAED900118B95 /* AppDelegate.swift in Sources */,
+				929E85C822301C2E009CA3CB /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
