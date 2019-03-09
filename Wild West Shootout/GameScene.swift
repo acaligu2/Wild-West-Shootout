@@ -24,10 +24,11 @@ class GameScene: SKScene {
     var winner = -1
     
     lazy var countdownLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "Ariel")
+        var label = SKLabelNode()
+        label.fontName = "Carnivalee Freakshow"
         label.fontSize = 200.0
         label.zPosition = 2
-        label.color = SKColor.brown
+        label.fontColor = SKColor.brown
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
         label.text = "\(maxTime)"
@@ -37,7 +38,7 @@ class GameScene: SKScene {
     var labelText = 0;
     
     var counterTimer = Timer()
-    var maxTime = 10
+    var maxTime = 5
     
     override func didMove(to view: SKView) {
         
@@ -52,8 +53,7 @@ class GameScene: SKScene {
         countdownLabel.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.5)
         addChild(countdownLabel)
         
-        labelText = maxTime
-        startCount()
+        countdownLabel.text = "Wild West Shootout!"
         
         player1.setScale(1.25)
         player1.position = CGPoint(x: self.size.width * 0.15, y: self.size.height * 0.30)
@@ -70,6 +70,7 @@ class GameScene: SKScene {
     }
     
     func startCount(){
+        labelText = maxTime
         
         counterTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         
@@ -113,6 +114,7 @@ class GameScene: SKScene {
         }
         
     }
+ 
     
     func player1Shoot(){
         
@@ -163,6 +165,12 @@ class GameScene: SKScene {
         
         for touch in touches{
             
+            if(touch == touches.first){
+                
+                startCount()
+                
+            }
+            
             let location = touch.location(in: self)
             
             if(location.x < self.size.width/2){
@@ -180,40 +188,45 @@ class GameScene: SKScene {
             
         }
         
-        if(isLeft && allowedToShoot){
-            
-            player1Shoot()
-            //player1.texture = SKTexture(imageNamed:"leftCowboy1")
-        }
+        if(!gameOver){
         
-        if(isRight && allowedToShoot){
-            
-            player2Shoot()
-            //player2.texture = SKTexture(imageNamed:"rightCowboy0")
-            
-            
-        }
-        
-        if(allowedToShoot && !gameOver){
-        
-            if (leftTimestamp > rightTimestamp){
+            if(isLeft && allowedToShoot){
                 
-                countdownLabel.text = "Player 1 Wins!"
+                player1Shoot()
                 
-            }else if(rightTimestamp > leftTimestamp){
+            }
+            
+            if(isRight && allowedToShoot){
                 
-                countdownLabel.text = "Player 2 Wins!"
+                player2Shoot()
+                
+            }
+            
+            if(allowedToShoot){
+            
+                if (leftTimestamp > rightTimestamp){
+                    
+                    countdownLabel.text = "Player 1 Wins!"
+                    
+                }else if(rightTimestamp > leftTimestamp){
+                    
+                    countdownLabel.text = "Player 2 Wins!"
 
-            }else if(rightTimestamp == leftTimestamp){
+                }else if(rightTimestamp == leftTimestamp){
+                    
+                    countdownLabel.text = "TIE!"
+                    
+                }else{}
                 
-                countdownLabel.text = "TIE!"
+                gameOver = true
                 
-            }else{}
+            }
+
+        }else{
             
-            gameOver = true
             
         }
-
+            
     }
     
 }
