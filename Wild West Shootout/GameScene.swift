@@ -13,6 +13,10 @@ class GameScene: SKScene {
     
     let player1 = SKSpriteNode(imageNamed:"leftCowboy1")
     let player2 = SKSpriteNode(imageNamed:"rightCowboy0")
+    let tumbleweed = SKSpriteNode(imageNamed: "tumbleweed")
+    
+    let bullet2 = SKSpriteNode(imageNamed: "bullet")
+    let bullet1 = SKSpriteNode(imageNamed: "bullet")
     
     let gunSound = SKAction.playSoundFileNamed("gunshot.wav", waitForCompletion: false)
     let threeSound = SKAction.playSoundFileNamed("three.wav", waitForCompletion: true)
@@ -67,6 +71,25 @@ class GameScene: SKScene {
         
         self.addChild(player2)
         
+        tumbleweed.setScale(2.0)
+        tumbleweed.position = CGPoint(x: self.size.width * 0.025 - tumbleweed.size.width, y: self.size.height * 0.20)
+        tumbleweed.zPosition = 3
+        
+        self.addChild(tumbleweed)
+        
+        let rotate = SKAction.rotate(byAngle: -CGFloat.pi * 2, duration: 2.25)
+        let rep = SKAction.repeatForever(rotate)
+        let move = SKAction.moveTo(x: self.frame.size.width + tumbleweed.size.width, duration: 5.0)
+        let delete = SKAction.removeFromParent()
+        
+        let group = SKAction.group([move,rep])
+        
+        let sequence = SKAction.sequence([group, delete])
+        
+        tumbleweed.run(sequence)
+        
+        
+        
     }
     
     func startCount(){
@@ -118,14 +141,13 @@ class GameScene: SKScene {
     
     func player1Shoot(){
         
-        let bullet1 = SKSpriteNode(imageNamed: "bullet")
         bullet1.setScale(5)
         
         bullet1.position = player1.position
         bullet1.zPosition = 1
         self.addChild(bullet1)
         
-        let moveBullet = SKAction.moveTo(x: self.size.width + bullet1.size.width, duration: 0.5)
+        let moveBullet = SKAction.move(to: player2.position, duration: 0.1)
         let deleteBullet = SKAction.removeFromParent()
         
         player1.texture = SKTexture(imageNamed:"leftCowboy2")
@@ -137,20 +159,20 @@ class GameScene: SKScene {
     
     func player2Shoot(){
         
-        let bullet2 = SKSpriteNode(imageNamed: "bullet")
         bullet2.setScale(5)
         
         bullet2.position = player2.position
         bullet2.zPosition = 1
         self.addChild(bullet2)
         
-        let moveBullet = SKAction.moveTo(x: 0 - bullet2.size.width, duration: 0.5)
+        let moveBullet = SKAction.move(to: player1.position, duration: 0.1)
         let deleteBullet = SKAction.removeFromParent()
         
         player2.texture = SKTexture(imageNamed:"pixil-frame-0")
         let bulletSequence = SKAction.sequence([gunSound, moveBullet, deleteBullet])
         
         bullet2.run(bulletSequence)
+        
         
     }
 
@@ -207,14 +229,18 @@ class GameScene: SKScene {
                 if (leftTimestamp > rightTimestamp){
                     
                     countdownLabel.text = "Player 1 Wins!"
+                    player2.texture = SKTexture(imageNamed: "rightDead")
                     
                 }else if(rightTimestamp > leftTimestamp){
                     
                     countdownLabel.text = "Player 2 Wins!"
+                    player1.texture = SKTexture(imageNamed: "leftDead")
 
                 }else if(rightTimestamp == leftTimestamp){
                     
                     countdownLabel.text = "TIE!"
+                    player1.texture = SKTexture(imageNamed: "leftDead")
+                    player2.texture = SKTexture(imageNamed: "rightDead")
                     
                 }else{}
                 
