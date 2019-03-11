@@ -25,6 +25,7 @@ class GameScene: SKScene {
     let introSound = SKAction.playSoundFileNamed("introMusic.wav", waitForCompletion: true)
     
     var allowedToShoot = false
+    var startedCount = false
     var gameOver = false
     var winner = -1
     
@@ -97,6 +98,8 @@ class GameScene: SKScene {
     
     func startCount(){
         labelText = maxTime
+        
+        startedCount = true
         
         counterTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         
@@ -190,7 +193,7 @@ class GameScene: SKScene {
         
         for touch in touches{
             
-            if(touch == touches.first){
+            if(touch == touches.first && !startedCount){
                 
                 startCount()
                 
@@ -248,7 +251,6 @@ class GameScene: SKScene {
                 }else{}
                 
                 gameOver = true
-                gameOverDisplay()
                 
             }
 
@@ -259,12 +261,22 @@ class GameScene: SKScene {
             
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        
+        if(gameOver){
+            
+            gameOverDisplay()
+            
+        }
+        
+    }
+    
     func gameOverDisplay(){
         
         let reset = GameScene(size: self.size)
         reset.scaleMode = self.scaleMode
         
-        let animation = SKTransition.fade(withDuration: 1.0)
+        let animation = SKTransition.fade(withDuration: 10.0)
         self.view?.presentScene(reset, transition: animation)
         
         
