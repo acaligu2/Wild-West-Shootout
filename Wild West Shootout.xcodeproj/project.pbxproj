@@ -20,6 +20,7 @@
 		9205B62A222DAED900118B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9205B628222DAED900118B95 /* LaunchScreen.storyboard */; };
 		9205B635222DAED900118B95 /* Wild_West_ShootoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B634222DAED900118B95 /* Wild_West_ShootoutTests.swift */; };
 		9205B640222DAED900118B95 /* Wild_West_ShootoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */; };
+		92063E4A2236A3F400A6EA34 /* introMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92063E492236A3F400A6EA34 /* introMusic.wav */; };
 		92065B77222EAFBB001E79EF /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92065B76222EAFBB001E79EF /* gunshot.wav */; };
 		926A1E3E22344CC400A93932 /* ShootoutFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 926A1E3D22344CC400A93932 /* ShootoutFont.ttf */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		9205B63B222DAED900118B95 /* Wild West ShootoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wild West ShootoutUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9205B63F222DAED900118B95 /* Wild_West_ShootoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wild_West_ShootoutUITests.swift; sourceTree = "<group>"; };
 		9205B641222DAED900118B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92063E492236A3F400A6EA34 /* introMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introMusic.wav; sourceTree = "<group>"; };
 		92065B76222EAFBB001E79EF /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunshot.wav; sourceTree = "<group>"; };
 		926A1E3D22344CC400A93932 /* ShootoutFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShootoutFont.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				926A1E3D22344CC400A93932 /* ShootoutFont.ttf */,
 				9204D0E7222EE8540058B8C9 /* one.wav */,
 				9204D0E8222EE8540058B8C9 /* three.wav */,
+				92063E492236A3F400A6EA34 /* introMusic.wav */,
 				9204D0E6222EE8540058B8C9 /* two.wav */,
 				9205B626222DAED900118B95 /* Assets.xcassets */,
 				9205B628222DAED900118B95 /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 			files = (
 				9205B625222DAED900118B95 /* Main.storyboard in Resources */,
 				9205B61C222DAED900118B95 /* GameScene.sks in Resources */,
+				92063E4A2236A3F400A6EA34 /* introMusic.wav in Resources */,
 				926A1E3E22344CC400A93932 /* ShootoutFont.ttf in Resources */,
 				9205B627222DAED900118B95 /* Assets.xcassets in Resources */,
 				92065B77222EAFBB001E79EF /* gunshot.wav in Resources */,

@@ -22,6 +22,7 @@ class GameScene: SKScene {
     let threeSound = SKAction.playSoundFileNamed("three.wav", waitForCompletion: true)
     let twoSound = SKAction.playSoundFileNamed("two.wav", waitForCompletion: true)
     let oneSound = SKAction.playSoundFileNamed("one.wav", waitForCompletion: true)
+    let introSound = SKAction.playSoundFileNamed("introMusic.wav", waitForCompletion: true)
     
     var allowedToShoot = false
     var gameOver = false
@@ -45,6 +46,8 @@ class GameScene: SKScene {
     var maxTime = 5
     
     override func didMove(to view: SKView) {
+        
+        self.run(introSound)
         
         let background = SKSpriteNode(imageNamed: "background")
         background.setScale(0.1)
@@ -245,6 +248,7 @@ class GameScene: SKScene {
                 }else{}
                 
                 gameOver = true
+                gameOverDisplay()
                 
             }
 
@@ -253,6 +257,17 @@ class GameScene: SKScene {
             
         }
             
+    }
+    
+    func gameOverDisplay(){
+        
+        let reset = GameScene(size: self.size)
+        reset.scaleMode = self.scaleMode
+        
+        let animation = SKTransition.fade(withDuration: 1.0)
+        self.view?.presentScene(reset, transition: animation)
+        
+        
     }
     
 }
